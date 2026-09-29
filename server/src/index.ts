@@ -5,6 +5,7 @@ import express, {
 } from 'express'
 import { sequelize } from './db/db.js'
 import { departmentRoutes } from './routes/department.routes.js'
+import { employeeRoutes } from './routes/employee.routes.js'
 import { ValidationError } from './utils/validation.js'
 
 const app = express()
@@ -12,6 +13,7 @@ const port = process.env.PORT || 3000
 
 app.use(express.json())
 app.use('/api/departments', departmentRoutes)
+app.use('/api/employees', employeeRoutes)
 
 app.use((error: unknown, _req: Request, res: Response, _next: NextFunction) => {
   if (error instanceof ValidationError) {

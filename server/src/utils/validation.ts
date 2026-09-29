@@ -12,13 +12,11 @@ function isEmpty(value: unknown): boolean {
   return false
 }
 
-export const parseId = (value: unknown) => {
-  const id = Number(value)
-
-  if (!Number.isInteger(id) || id < 1) {
-    throw new ValidationError('Некорректный id')
+export const parseId = (value: unknown, field = 'id') => {
+  if (!INTEGER_PATTERN.test(String(value)) || Number(value) < 1) {
+    throw new ValidationError(`Некорректный ${field}`)
   }
-  return id
+  return Number(value)
 }
 
 export const readText = (
@@ -41,7 +39,7 @@ export const readText = (
 export const readInteger = (
   value: unknown,
   field: string,
-  { min = -Infinity, max = Infinity } = {},
+  { min = -Infinity, max = Number.MAX_SAFE_INTEGER } = {},
 ) => {
   if (isEmpty(value)) {
     return null

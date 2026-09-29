@@ -42,7 +42,6 @@ export const getById = async (req: Request, res: Response) => {
 
 export const create = async (req: Request, res: Response) => {
   const department = await Department.create(parseDepartment(req.body))
-
   res.status(201).json(department)
 }
 
