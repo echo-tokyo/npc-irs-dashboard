@@ -2,7 +2,6 @@ import js from '@eslint/js'
 import globals from 'globals'
 import tseslint from 'typescript-eslint'
 import pluginReact from 'eslint-plugin-react'
-import reactCompiler from 'eslint-plugin-react-compiler'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import prettierConfig from 'eslint-config-prettier'
@@ -13,11 +12,16 @@ export default defineConfig([
     ignores: ['dist/**', 'node_modules/**'],
   },
   {
-    files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    files: ['**/*.{js,ts,tsx}'],
     plugins: { js },
     extends: ['js/recommended'],
     languageOptions: { globals: globals.browser },
   },
+  tseslint.configs.recommended,
+  pluginReact.configs.flat.recommended,
+  pluginReact.configs.flat['jsx-runtime'],
+  reactHooks.configs.flat.recommended,
+  reactRefresh.configs.vite,
   {
     rules: {
       'default-case': 'warn',
@@ -25,8 +29,11 @@ export default defineConfig([
       'no-alert': 'warn',
       'prefer-arrow-callback': 'warn',
       'no-var': 'warn',
-      'no-duplicate-case': 'warn',
-      'no-extra-boolean-cast': 'warn',
+      'object-shorthand': 'warn',
+      'prefer-const': 'warn',
+      'no-else-return': 'warn',
+      eqeqeq: 'warn',
+      '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/no-unused-vars': [
         'warn',
         {
@@ -35,27 +42,8 @@ export default defineConfig([
           ignoreRestSiblings: true,
         },
       ],
-      '@typescript-eslint/no-explicit-any': 'warn',
-      'react/jsx-key': 'warn',
-      'object-shorthand': 'warn',
-      'prefer-const': 'warn',
-      'no-trailing-spaces': 'warn',
-      eqeqeq: 'warn',
-      'arrow-parens': ['warn', 'always'],
-      curly: 'warn',
-      'no-else-return': 'warn',
-      quotes: ['warn', 'single'],
-      semi: ['warn', 'never'],
-      'comma-dangle': ['warn', 'always-multiline'],
-      indent: ['warn', 2],
     },
   },
-  tseslint.configs.recommended,
-  pluginReact.configs.flat.recommended,
-  pluginReact.configs.flat['jsx-runtime'],
-  reactHooks.configs.flat.recommended,
-  reactRefresh.configs.vite,
-  reactCompiler.configs.recommended,
   prettierConfig,
   {
     settings: {
