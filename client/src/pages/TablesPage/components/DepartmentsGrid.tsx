@@ -1,8 +1,8 @@
 import type { ColDef, IDatasource } from 'ag-grid-community'
 import type { Department } from '@/types/department'
 import { getDepartments } from '@/services/department.service'
-import { formatDate, formatMoney } from '@/utils/format'
-import { DataGrid } from '@/components/ui/DataGrid'
+import { formatDate, formatMoney, formatValue } from '@/utils/format'
+import { DataGrid } from '@/components/DataGrid'
 
 const PAGE_SIZE = 10
 
@@ -22,7 +22,11 @@ const columnDefs: ColDef<Department>[] = [
   },
 ]
 
-const defaultColDef: ColDef = { flex: 1, sortable: false }
+const defaultColDef: ColDef = {
+  flex: 1,
+  sortable: false,
+  valueFormatter: ({ value }) => formatValue(value),
+}
 
 const datasource: IDatasource = {
   getRows: async ({ startRow, endRow, successCallback, failCallback }) => {

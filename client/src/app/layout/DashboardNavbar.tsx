@@ -7,12 +7,12 @@ import {
   useScrollTrigger,
 } from '@mui/material'
 import { Link, useLocation } from 'react-router'
-import { routes } from '@/app/routes'
-import { shadows } from '@/assets/theme'
+import { routes } from '../routes'
+import { colors, shadows } from '@/assets/theme'
 
 const styles = {
   navbar: {
-    top: 12,
+    top: 16,
     mb: 3,
     py: 1,
     borderRadius: '12px',
@@ -20,7 +20,7 @@ const styles = {
     transition: 'all 300ms ease-in-out',
   },
   glass: {
-    bgcolor: 'rgba(26, 32, 53, 0.8)',
+    bgcolor: colors.navbarGlass,
     backdropFilter: 'saturate(200%) blur(30px)',
     boxShadow: shadows.navbar,
   },
@@ -45,7 +45,7 @@ export const DashboardNavbar = () => {
     >
       <Toolbar variant='dense' sx={styles.toolbar}>
         <Breadcrumbs sx={styles.breadcrumbs}>
-          <Link to='/'>
+          <Link to='/' aria-label='Главная'>
             <HomeIcon fontSize='small' sx={styles.homeIcon} />
           </Link>
           <Typography variant='button' sx={styles.crumb}>

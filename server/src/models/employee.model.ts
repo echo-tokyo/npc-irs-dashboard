@@ -25,12 +25,11 @@ export class Employee extends Model<
 
   static findAllWithDepartment() {
     return sequelize.query<EmployeeWithDepartment>(
-      `
-      SELECT e.id, e.department_id, d.name AS department_name,
-      e.full_name, e.salary, e.age, e.hire_date
-      FROM employees e
-      JOIN departments d ON d.id = e.department_id
-      ORDER BY e.id`,
+      `SELECT e.id, e.department_id, d.name AS department_name,
+              e.full_name, e.salary, e.age, e.hire_date
+       FROM employees e
+       JOIN departments d ON d.id = e.department_id
+       ORDER BY e.id`,
       { type: QueryTypes.SELECT },
     )
   }

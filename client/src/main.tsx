@@ -7,6 +7,8 @@ import {
   InfiniteRowModelModule,
   ModuleRegistry,
   NumberFilterModule,
+  RowApiModule,
+  RowSelectionModule,
   TextFilterModule,
 } from 'ag-grid-community'
 import { RouterProvider } from 'react-router'
@@ -16,6 +18,8 @@ import { theme } from '@/assets/theme'
 ModuleRegistry.registerModules([
   InfiniteRowModelModule,
   ClientSideRowModelModule,
+  RowSelectionModule,
+  RowApiModule,
   TextFilterModule,
   NumberFilterModule,
   DateFilterModule,
@@ -24,7 +28,7 @@ ModuleRegistry.registerModules([
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ThemeProvider theme={theme}>
-      <CssBaseline />
+      <CssBaseline enableColorScheme />
       <RouterProvider router={router} />
     </ThemeProvider>
   </StrictMode>,

@@ -1,4 +1,4 @@
-import DashboardIcon from '@mui/icons-material/Dashboard'
+import DashboardIcon from '@mui/icons-material/SpaceDashboardRounded'
 import {
   Box,
   Divider,
@@ -10,8 +10,8 @@ import {
   Typography,
 } from '@mui/material'
 import { NavLink } from 'react-router'
-import { routes } from '@/app/routes'
-import { gradients, shadows } from '@/assets/theme'
+import { routes } from '../routes'
+import { colors, gradients, shadows } from '@/assets/theme'
 
 export const SIDENAV_WIDTH = 250
 
@@ -22,7 +22,7 @@ const styles = {
     m: 2,
     border: 'none',
     borderRadius: '12px',
-    bgcolor: '#1f283e',
+    bgcolor: colors.sidenav,
     boxShadow: shadows.xxl,
   },
   brand: {
@@ -60,7 +60,7 @@ export const Sidenav = () => (
       </Typography>
     </Box>
     <Divider />
-    <List disablePadding>
+    <List component='nav' disablePadding>
       {routes.map(({ path, title, icon }) => (
         <ListItemButton
           key={path}

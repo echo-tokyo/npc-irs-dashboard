@@ -1,8 +1,14 @@
-import { createTheme } from '@mui/material/styles'
+import { alpha, createTheme } from '@mui/material/styles'
+
+const BACKGROUND = '#1a2035'
+
+export const colors = {
+  sidenav: '#1f283e',
+  navbarGlass: alpha(BACKGROUND, 0.8),
+}
 
 export const gradients = {
   info: 'linear-gradient(195deg, #49a3f1, #1A73E8)',
-  dark: 'linear-gradient(195deg, #323a54, #1a2035)',
 }
 
 export const shadows = {
@@ -21,7 +27,7 @@ export const theme = createTheme({
     success: { main: '#4CAF50' },
     warning: { main: '#fb8c00' },
     error: { main: '#F44335' },
-    background: { default: '#1a2035', paper: '#202940' },
+    background: { default: BACKGROUND, paper: '#202940' },
     text: { primary: '#ffffffcc', secondary: '#ffffff99' },
   },
   shape: { borderRadius: 8 },
@@ -32,6 +38,19 @@ export const theme = createTheme({
     button: { fontSize: '0.875rem', fontWeight: 300 },
   },
   components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        '*': {
+          scrollbarWidth: 'thin',
+          scrollbarColor: 'rgba(255, 255, 255, 0.2) transparent',
+        },
+      },
+    },
+    MuiInputBase: {
+      styleOverrides: {
+        input: { color: '#ffffff' },
+      },
+    },
     MuiDivider: {
       styleOverrides: {
         root: {
