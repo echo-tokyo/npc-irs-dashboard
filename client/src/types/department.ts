@@ -3,7 +3,7 @@ export interface Department {
   name: string
   budget: string | null
   floor: number | null
-  created_at: string | null
+  created_at: string
 }
 
 export interface DepartmentPage {

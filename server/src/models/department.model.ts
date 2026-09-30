@@ -16,7 +16,7 @@ export class Department extends Model<
   declare name: string
   declare budget: string | null
   declare floor: number | null
-  declare created_at: string | null
+  declare created_at: CreationOptional<string>
 
   static async findPage(limit: number | null, offset: number) {
     const [rows, [{ total }]] = await Promise.all([

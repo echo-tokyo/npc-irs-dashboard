@@ -1,7 +1,11 @@
-import { Typography } from '@mui/material'
+import { Stack } from '@mui/material'
+import { DepartmentsGrid } from '@/components/DepartmentsGrid'
+import { SectionCard } from '@/components/SectionCard'
 
 export const TablesPage = () => (
-  <Typography color='text.secondary'>
-    Здесь будут таблицы отделов и сотрудников
-  </Typography>
+  <Stack spacing={6} sx={{ pt: 3 }}>
+    <SectionCard title='Отделы'>
+      <DepartmentsGrid />
+    </SectionCard>
+  </Stack>
 )

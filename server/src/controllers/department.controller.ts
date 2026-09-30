@@ -3,7 +3,6 @@ import { ForeignKeyConstraintError } from 'sequelize'
 import { Department } from '../models/department.model.js'
 import {
   parseId,
-  readDate,
   readInteger,
   readMoney,
   readText,
@@ -15,7 +14,6 @@ const parseDepartment = (body: Record<string, unknown> = {}) => ({
   name: readText(body.name, 'name', { maxLength: 100 }),
   budget: readMoney(body.budget, 'budget', { max: 1_000_000_000 }),
   floor: readInteger(body.floor, 'floor', { min: -5, max: 100 }),
-  created_at: readDate(body.created_at, 'created_at'),
 })
 
 export const getAll = async (req: Request, res: Response) => {

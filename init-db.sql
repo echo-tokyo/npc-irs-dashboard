@@ -10,7 +10,7 @@ CREATE TABLE departments (
   name       VARCHAR(100) NOT NULL,
   budget     NUMERIC(12, 2),
   floor      INTEGER,
-  created_at DATE
+  created_at DATE NOT NULL DEFAULT CURRENT_DATE
 );
 
 CREATE TABLE employees (
