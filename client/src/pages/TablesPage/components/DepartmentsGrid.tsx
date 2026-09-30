@@ -1,6 +1,6 @@
 import type { ColDef, IDatasource } from 'ag-grid-community'
 import type { Department } from '@/types/department'
-import { getDepartments } from '@/services/department.service'
+import { getDepartments } from '@/services/department-service'
 import { formatDate, formatMoney, formatValue } from '@/utils/format'
 import { DataGrid } from '@/components/DataGrid'
 

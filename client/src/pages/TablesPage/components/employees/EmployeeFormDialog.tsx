@@ -7,8 +7,8 @@ import {
   DialogTitle,
 } from '@mui/material'
 import { toast } from 'sonner'
-import { getDepartments } from '@/services/department.service'
-import { createEmployee, updateEmployee } from '@/services/employee.service'
+import { getDepartments } from '@/services/department-service'
+import { createEmployee, updateEmployee } from '@/services/employee-service'
 import type { Department } from '@/types/department'
 import type { Employee } from '@/types/employee'
 import { EmployeeFormFields } from './EmployeeFormFields'
@@ -17,15 +17,17 @@ import {
   toEmployeePayload,
   validateEmployeeForm,
   type EmployeeFormErrors,
-} from './employeeForm'
+} from '../../utils/employee-form'
 
 interface EmployeeFormDialogProps {
+  open: boolean
   employee: Employee | null
   onClose: () => void
   onSaved: () => void
 }
 
 export const EmployeeFormDialog = ({
+  open,
   employee,
   onClose,
   onSaved,
@@ -81,7 +83,7 @@ export const EmployeeFormDialog = ({
   }
 
   return (
-    <Dialog open onClose={onClose} maxWidth='sm' fullWidth>
+    <Dialog open={open} onClose={onClose} maxWidth='sm' fullWidth>
       <form onSubmit={handleSubmit} noValidate>
         <DialogTitle>{title}</DialogTitle>
         <DialogContent>
@@ -93,7 +95,9 @@ export const EmployeeFormDialog = ({
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={onClose}>Отмена</Button>
+          <Button variant='contained' color='secondary' onClick={onClose}>
+            Отмена
+          </Button>
           <Button type='submit' variant='contained' disabled={isSaving}>
             Сохранить
           </Button>

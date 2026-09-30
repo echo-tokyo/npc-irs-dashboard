@@ -1,9 +1,12 @@
-import type { ChangeEvent } from 'react'
+import { useState, type ChangeEvent } from 'react'
 import type { Department } from '@/types/department'
-import type { EmployeeForm, EmployeeFormErrors } from './employeeForm'
+import type {
+  EmployeeForm,
+  EmployeeFormErrors,
+} from '../../utils/employee-form'
 import { MenuItem, Stack, TextField } from '@mui/material'
 
-const emptyDateStyle = { '& input:not(:focus)': { color: 'text.secondary' } }
+const hiddenDateStyle = { '& input': { color: 'transparent' } }
 
 interface EmployeeFormFieldsProps {
   form: EmployeeForm
@@ -18,6 +21,8 @@ export const EmployeeFormFields = ({
   departments,
   onChange,
 }: EmployeeFormFieldsProps) => {
+  const [isDateFocused, setIsDateFocused] = useState(false)
+
   const fieldProps = (name: keyof EmployeeForm) => ({
     name,
     value: form[name],
@@ -28,7 +33,7 @@ export const EmployeeFormFields = ({
   })
 
   const departmentValue = departments.length > 0 ? form.department_id : ''
-  const dateStyle = form.hire_date ? undefined : emptyDateStyle
+  const isDateEmpty = !form.hire_date && !isDateFocused
 
   return (
     <Stack spacing={2} sx={{ pt: 1 }}>
@@ -60,8 +65,10 @@ export const EmployeeFormFields = ({
         {...fieldProps('hire_date')}
         type='date'
         label='Дата найма'
-        sx={dateStyle}
-        slotProps={{ inputLabel: { shrink: true } }}
+        sx={isDateEmpty ? hiddenDateStyle : undefined}
+        onFocus={() => setIsDateFocused(true)}
+        onBlur={() => setIsDateFocused(false)}
+        slotProps={{ inputLabel: { shrink: !isDateEmpty } }}
       />
     </Stack>
   )

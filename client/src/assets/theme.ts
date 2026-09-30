@@ -9,6 +9,8 @@ export const colors = {
 
 export const gradients = {
   info: 'linear-gradient(195deg, #49a3f1, #1A73E8)',
+  secondary: 'linear-gradient(195deg, #747b8a, #495361)',
+  error: 'linear-gradient(195deg, #EF5350, #E53935)',
 }
 
 export const shadows = {
@@ -51,6 +53,11 @@ export const theme = createTheme({
         input: { color: '#ffffff' },
       },
     },
+    MuiDialogActions: {
+      styleOverrides: {
+        root: { padding: '8px 24px 24px' },
+      },
+    },
     MuiDivider: {
       styleOverrides: {
         root: {
@@ -84,6 +91,7 @@ export const theme = createTheme({
           fontSize: '0.75rem',
           fontWeight: 700,
           lineHeight: 1.4,
+          '&.Mui-disabled': { backgroundImage: 'none' },
           variants: [
             {
               props: { variant: 'contained', color: 'primary' },
@@ -91,6 +99,14 @@ export const theme = createTheme({
                 backgroundImage: gradients.info,
                 '&:hover': { boxShadow: shadows.info },
               },
+            },
+            {
+              props: { variant: 'contained', color: 'secondary' },
+              style: { backgroundImage: gradients.secondary },
+            },
+            {
+              props: { variant: 'contained', color: 'error' },
+              style: { backgroundImage: gradients.error },
             },
           ],
         },

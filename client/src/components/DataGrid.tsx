@@ -2,7 +2,7 @@ import { useState } from 'react'
 import type { ModelUpdatedEvent } from 'ag-grid-community'
 import { AgGridReact, type AgGridReactProps } from 'ag-grid-react'
 import { Box, Typography } from '@mui/material'
-import { gridTheme } from '@/assets/gridTheme'
+import { gridTheme } from '@/assets/grid-theme'
 
 const GRID_HEIGHT = 400
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { SectionCard } from '@/components/SectionCard'
-import { getEmployees } from '@/services/employee.service'
+import { getEmployees } from '@/services/employee-service'
 import type { Employee } from '@/types/employee'
 import { EmployeesGrid } from './EmployeesGrid'
 import { EmployeesToolbar } from './EmployeesToolbar'

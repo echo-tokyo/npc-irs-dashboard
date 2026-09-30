@@ -3,7 +3,7 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import { Button } from '@mui/material'
 import { toast } from 'sonner'
 import { ConfirmDialog } from '@/components/ConfirmDialog'
-import { deleteEmployee } from '@/services/employee.service'
+import { deleteEmployee } from '@/services/employee-service'
 import type { Employee } from '@/types/employee'
 
 interface DeleteEmployeeButtonProps {
@@ -36,7 +36,7 @@ export const DeleteEmployeeButton = ({
   return (
     <>
       <Button
-        variant='outlined'
+        variant='contained'
         color='error'
         startIcon={<DeleteIcon />}
         disabled={!employee}

@@ -27,7 +27,8 @@ export const EmployeesToolbar = ({
       Добавить
     </EmployeeFormButton>
     <EmployeeFormButton
-      variant='outlined'
+      variant='contained'
+      color='secondary'
       startIcon={<EditIcon />}
       employee={selected}
       disabled={!selected}

@@ -31,7 +31,9 @@ export const ConfirmDialog = ({
       <DialogContentText>{message}</DialogContentText>
     </DialogContent>
     <DialogActions>
-      <Button onClick={onClose}>Отмена</Button>
+      <Button variant='contained' color='secondary' onClick={onClose}>
+        Отмена
+      </Button>
       <Button variant='contained' color='error' onClick={onConfirm}>
         {confirmText}
       </Button>

@@ -14,6 +14,12 @@ export const EmployeeFormButton = ({
   ...buttonProps
 }: EmployeeFormButtonProps) => {
   const [isOpen, setIsOpen] = useState(false)
+  const [dialogKey, setDialogKey] = useState(0)
+
+  const handleOpen = () => {
+    setDialogKey((key) => key + 1)
+    setIsOpen(true)
+  }
 
   const handleSaved = () => {
     setIsOpen(false)
@@ -22,9 +28,11 @@ export const EmployeeFormButton = ({
 
   return (
     <>
-      <Button {...buttonProps} onClick={() => setIsOpen(true)} />
-      {isOpen && (
+      <Button {...buttonProps} onClick={handleOpen} />
+      {dialogKey > 0 && (
         <EmployeeFormDialog
+          key={dialogKey}
+          open={isOpen}
           employee={employee}
           onClose={() => setIsOpen(false)}
           onSaved={handleSaved}
