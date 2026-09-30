@@ -1,10 +1,8 @@
 import type { ColDef, IDatasource } from 'ag-grid-community'
 import type { Department } from '@/types/department'
-import { AgGridReact } from 'ag-grid-react'
-import { Box } from '@mui/material'
-import { gridTheme } from '@/assets/gridTheme'
 import { getDepartments } from '@/services/department.service'
 import { formatDate, formatMoney } from '@/utils/format'
+import { DataGrid } from '@/components/ui/DataGrid'
 
 const PAGE_SIZE = 10
 
@@ -41,15 +39,11 @@ const datasource: IDatasource = {
 }
 
 export const DepartmentsGrid = () => (
-  <Box sx={{ height: 400 }}>
-    <AgGridReact<Department>
-      theme={gridTheme}
-      columnDefs={columnDefs}
-      defaultColDef={defaultColDef}
-      rowModelType='infinite'
-      datasource={datasource}
-      cacheBlockSize={PAGE_SIZE}
-      alwaysShowVerticalScroll
-    />
-  </Box>
+  <DataGrid<Department>
+    columnDefs={columnDefs}
+    defaultColDef={defaultColDef}
+    rowModelType='infinite'
+    datasource={datasource}
+    cacheBlockSize={PAGE_SIZE}
+  />
 )

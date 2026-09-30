@@ -16,6 +16,18 @@ export default defineConfig([
   },
   tseslint.configs.recommended,
   {
+    files: ['**/*.ts'],
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+    rules: {
+      '@typescript-eslint/no-floating-promises': 'error',
+    },
+  },
+  {
     rules: {
       'default-case': 'warn',
       'prefer-arrow-callback': 'warn',

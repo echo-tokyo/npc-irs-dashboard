@@ -3,8 +3,8 @@ const moneyFormat = new Intl.NumberFormat('ru-RU', {
   currency: 'RUB',
 })
 
-export const formatMoney = (value?: string | null) => {
-  if (!value) {
+export const formatMoney = (value?: string | number | null) => {
+  if (value === undefined || value === null) {
     return ''
   }
   return moneyFormat.format(Number(value))

@@ -23,6 +23,18 @@ export default defineConfig([
   reactHooks.configs.flat.recommended,
   reactRefresh.configs.vite,
   {
+    files: ['**/*.{ts,tsx}'],
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+    rules: {
+      '@typescript-eslint/no-floating-promises': 'error',
+    },
+  },
+  {
     rules: {
       'default-case': 'warn',
       'no-console': 'warn',
